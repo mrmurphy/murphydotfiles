@@ -1,0 +1,34 @@
+[user]
+	name = Murphy Randle
+	email = murphyrandle@gmail.com
+[credential]
+	helper = osxkeychain
+[core]
+	editor = /Applications/MacVim.app/Contents/MacOS/Vim
+	excludesfile = /Users/murphy/.gitignore
+[alias]
+		ci = commit
+		co = checkout
+		aa = add --all :/
+		s = status
+		hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+		h = !git hist | head -n 8
+		adam = !git aa && git commit --amend
+		adcom = !git aa && git commit
+		als = !git config --get-regexp alias
+    resorig = !git fetch && git reset --hard origin/master
+    up = pull --rebase
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[grep]
+	lineNumber = true
+[diff]
+[diff]
+[merge]
+	tool = /Users/murphy/bin/opendiff-git.sh
+[push]
+	default = current
