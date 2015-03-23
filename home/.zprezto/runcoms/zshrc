@@ -1,0 +1,59 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.murphydot/home/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.murphydot/home/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+alias ed=vim
+alias nisd="npm install --save-dev"
+alias nusd="npm uninstall --save-dev"
+alias nis="npm install --save"
+alias nus="npm uninstall --save"
+alias kp="cd ~/projects/kuali"
+alias serve="python -m SimpleHTTPServer"
+
+function erc() {
+  ed ~/.zshrc
+}
+
+function rrc() {
+  source ~/.zshrc
+}
+
+export EDITOR=vim
+
+export PROJECTS=$HOME/projects
+
+export PATH="$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+#export VAGRANT_CWD=$HOME/vagrant/kuali
+
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh # this loads nvm
+
+
+## The following section only runs on Mac computers:
+if [[ "$OSTYPE" == "darwin"* ]]; then
+
+  alias rm=trash
+  export DOCKER_HOST=tcp://192.168.33.18:2375
+  export KUALI_PROJECTS=$HOME/projects
+
+  # For when `hub` is installed:
+  eval "$(hub alias -s)"
+
+  # Add GHC 7.8.3 to the PATH, via http://ghcformacosx.github.io/
+  export GHC_DOT_APP="/Applications/ghc-7.8.3.app"
+  if [ -d "$GHC_DOT_APP" ]; then
+      export PATH="${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+  fi
+
+fi
+
+source ~/.secrets.env
